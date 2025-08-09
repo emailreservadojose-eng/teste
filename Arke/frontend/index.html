@@ -1,0 +1,93 @@
+<!-- frontend/index.html -->
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
+    />
+    <title>ARKÉ — Sobrevivência e Exploração</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <!-- Tela de Autenticação -->
+    <div id="auth-modal" class="modal visible" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <div class="modal-content">
+        <h1 id="auth-title">ARKÉ</h1>
+        <div class="tabs" role="tablist" aria-label="Autenticação">
+          <button id="tab-login" role="tab" aria-selected="true">Entrar</button>
+          <button id="tab-register" role="tab">Criar conta</button>
+        </div>
+        <form id="login-form" class="tab-panel" aria-labelledby="tab-login">
+          <label>Usuário <input id="login-username" required pattern="[A-Za-z0-9_]{3,16}" /></label>
+          <label>Senha <input id="login-password" type="password" required minlength="6" /></label>
+          <label class="inline"><input id="keep-logged" type="checkbox" /> Manter conectado</label>
+          <button type="submit">Entrar</button>
+          <p id="login-error" class="error" aria-live="polite"></p>
+        </form>
+        <form id="register-form" class="tab-panel hidden" aria-labelledby="tab-register">
+          <label>Usuário <input id="register-username" required pattern="[A-Za-z0-9_]{3,16}" /></label>
+          <label>Senha <input id="register-password" type="password" required minlength="6" /></label>
+          <button type="submit">Criar conta</button>
+          <p id="register-error" class="error" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden" aria-hidden="true">
+      <div class="bars">
+        <div class="bar hp"><span id="hp-val">100</span></div>
+        <div class="bar stamina"><span id="stamina-val">100</span></div>
+        <div class="bar xp"><span id="xp-val">0</span></div>
+      </div>
+      <div class="hotbar" role="list" aria-label="Hotbar">
+        <div class="slot" data-key="1">1</div>
+        <div class="slot" data-key="2">2</div>
+        <div class="slot" data-key="3">3</div>
+        <div class="slot" data-key="4">4</div>
+        <div class="slot" data-key="5">5</div>
+      </div>
+      <div class="minimap" aria-label="Minimapa"></div>
+      <div class="clock"><span id="world-time">06:00</span></div>
+    </div>
+
+    <!-- Canvas do Mundo -->
+    <canvas id="game-canvas" width="960" height="540" aria-label="Mundo do jogo"></canvas>
+
+    <!-- UI: Inventário & Crafting -->
+    <div id="inventory-modal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-content large">
+        <h2>Inventário e Crafting</h2>
+        <div class="inv-craft">
+          <div class="inventory">
+            <div class="grid" id="inventory-grid" role="grid" aria-label="Inventário"></div>
+          </div>
+          <div class="craft">
+            <div class="filters">
+              <button data-station="mao">Mão</button>
+              <button data-station="bancada">Bancada</button>
+              <button data-station="forja">Forja</button>
+              <button data-station="fogueira">Fogueira</button>
+            </div>
+            <div id="recipes-list"></div>
+          </div>
+        </div>
+        <button id="inventory-close">Fechar</button>
+      </div>
+    </div>
+
+    <!-- Controles mobiles -->
+    <div id="mobile-controls" class="hidden">
+      <div id="joystick"></div>
+      <div class="buttons">
+        <button id="btn-attack">Atacar</button>
+        <button id="btn-interact">Interagir</button>
+        <button id="btn-inventory">Inv</button>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
