@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>3D Coin Runner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <noscript>Este jogo precisa de JavaScript habilitado.</noscript>
+
+    <div id="hud" aria-live="polite">
+      <div class="stat">Moedas: <span id="score">0</span></div>
+      <div class="stat">Tempo: <span id="time">0.0</span>s</div>
+    </div>
+
+    <div id="overlay" class="overlay visible" role="dialog" aria-modal="true">
+      <div class="panel">
+        <h1>3D Coin Runner</h1>
+        <p>Use WASD ou as setas para mover. Colete todas as moedas e evite os blocos em movimento.</p>
+        <button id="startBtn" class="primary">Começar</button>
+        <p class="hint">Dica: gire o mouse/tela para olhar ao redor se necessário.</p>
+      </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
